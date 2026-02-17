@@ -4,8 +4,7 @@ import NavbarView from './NavbarView.vue';
 </script>
 
 <template>
-  <NavbarView />
   <main>
-    <TheWelcome />
+    
   </main>
 </template>
