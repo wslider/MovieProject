@@ -5,18 +5,18 @@ import NavbarView from './views/NavbarView.vue';
 </script>
 
 <template>
+  <div class="wrapper">
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <nav>
+  <NavbarView />
+    </nav>
 
-    <div class="wrapper">
-
-      <nav>
-        <NavbarView />
-      </nav>
-    </div>
   </header>
 
   <RouterView />
+
+  
+  </div>
 </template>
 
 <style scoped>
