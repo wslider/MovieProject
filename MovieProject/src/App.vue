@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import NavbarView from './views/NavbarView.vue';
+import FooterView from './views/FooterView.vue';
 </script>
 
 <template>
@@ -15,14 +16,16 @@ import NavbarView from './views/NavbarView.vue';
 
   <RouterView />
 
-  
+  <FooterView />
   </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+:root {
+    --dark-movietheater: #0b0c10;
+    --dark-midnight-blue: #1c2837;
+    --light-movie-credits-white: #c5c6c7;
+    --popcorn-butter-yellow: #f0e400;
 }
 
 .logo {
