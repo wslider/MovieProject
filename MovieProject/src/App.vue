@@ -7,12 +7,9 @@ import FooterView from './views/FooterView.vue';
 
 <template>
   <div class="wrapper">
-  <header>
     <nav>
   <NavbarView />
     </nav>
-
-  </header>
 
   <RouterView />
 

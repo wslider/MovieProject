@@ -1,17 +1,22 @@
 <script setup>
+import MoviePosterScrollView from './MoviePosterScrollView.vue';
+import SearchbarView from './SearchbarView.vue';
+
 </script>
 
 <template>
-  <header class="home-header">
-    <div class="home-container">
-      <h1>Welcome to MovieProject</h1>
-      <p>Discover movies, read reviews, and stay updated with the latest in cinema.</p>
-    </div>
-    <form class="search-form">
-      <input type="text" placeholder="Search for movies..." />
-      <button type="submit">Search</button>
-    </form>
-  </header>
+  <div class="wrapper">
+    <header class="home-header">
+      <div class="home-container">
+        <h1>Welcome to MovieProject</h1>
+        <p>Discover movies, read reviews, and stay updated with the latest in cinema.</p>
+      </div>
+      <SearchbarView /> <!-- will allow users to search for movies, actors, directors, etc. -->
+    </header> 
+    <main class="home-content">
+      <MoviePosterScrollView /> <!-- will display sample movie poster with scroll view or most recent movie viewed / searched-->
+    </main>
+  </div>
 </template>
 
 <style scoped>
