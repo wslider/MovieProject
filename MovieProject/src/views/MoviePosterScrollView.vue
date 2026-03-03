@@ -10,7 +10,6 @@ onMounted(() => {
 
   observer = new IntersectionObserver(
     (entries) => {
-      // Pick the top-most visible section for clean step progression
       const visibleEntry = entries
         .filter(e => e.isIntersecting)
         .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0]
@@ -18,14 +17,14 @@ onMounted(() => {
       if (visibleEntry) {
         const index = Array.from(sections).indexOf(visibleEntry.target) + 1
         currentStep.value = index
-        movieEl.className = 'movie' // reset classes
+        movieEl.className = 'movie'
         movieEl.classList.add(`step-${index}`)
       }
     },
     {
       root: null,
       threshold: [0.4, 0.6, 0.8],
-      rootMargin: '-20% 0px -30% 0px' // triggers a bit earlier on scroll down
+      rootMargin: '-20% 0px -30% 0px'
     }
   )
 
@@ -38,15 +37,21 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <main class="scroll-container">
+    <section class="scroll-section"></section>
+    <section class="scroll-section"></section>
+    <section class="scroll-section"></section>
+  </main>
+
   <div class="movie" :class="`step-${currentStep}`">
     <div class="bg">
       <img
-        src="http://www.impawards.com/2014/posters/interstellar.jpg"
-        alt="Interstellar official movie poster"
+        src="https://m.media-amazon.com/images/I/81C7fjFH3HL.jpg"
+        alt="Featured movie poster"
+        loading="eager"
       />
     </div>
 
-    <!-- Content layers -->
     <div class="content-layer step-1">
       <div class="content-box">
         <h1>Interstellar</h1>
@@ -84,13 +89,6 @@ onUnmounted(() => {
       </div>
     </div>
   </div>
-
-  <!-- Scroll trigger sections -->
-  <main class="scroll-container">
-    <section class="scroll-section"></section>
-    <section class="scroll-section"></section>
-    <section class="scroll-section"></section>
-  </main>
 </template>
 
 <style scoped>
@@ -122,7 +120,9 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   transform: scale(1.4);
-  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); /* smoother cosmic zoom */
+  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .content-layer {
@@ -162,7 +162,6 @@ h1, h3 {
   letter-spacing: 1px;
 }
 
-/* Visibility & animations per step */
 .movie.step-1 .content-layer.step-1,
 .movie.step-2 .content-layer.step-2,
 .movie.step-3 .content-layer.step-3 {
@@ -171,18 +170,26 @@ h1, h3 {
   pointer-events: auto;
 }
 
-/* Background zoom-out as you progress (space vastness feel) */
 .movie.step-1 .bg img { transform: scale(1.40); }
 .movie.step-2 .bg img { transform: scale(1.20); }
 .movie.step-3 .bg img { transform: scale(1.00); }
 
-/* Scroll sections */
 .scroll-container {
   position: relative;
   z-index: 1;
+  background: transparent;
 }
 
 .scroll-section {
   height: 100vh;
+}
+</style>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: transparent !important;
 }
 </style>

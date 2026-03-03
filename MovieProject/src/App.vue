@@ -25,6 +25,7 @@ import FooterView from './views/FooterView.vue';
     --popcorn-butter-yellow: #f0e400;
 }
 
+
 .logo {
   display: block;
   margin: 0 auto 2rem;
